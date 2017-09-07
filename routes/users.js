@@ -26,6 +26,7 @@ router.post('/register', function(req, res, next) {
 	});
 });
 
+
 //Authenticate
 router.post('/authenticate', function(req, res, next) {
 	const username = req.body.username;
@@ -36,7 +37,7 @@ router.post('/authenticate', function(req, res, next) {
 			throw err;
 		}
 		if(!user){
-			return res.json({success: "false", msg: "User not found!"});
+			return res.json({success: false, msg: "User not found!"});
 		}
 
 		User.comparePassword(password, user.password, function(err, isMatch) {
@@ -61,7 +62,7 @@ router.post('/authenticate', function(req, res, next) {
 				});
 			} else {
 				return res.json({
-					success: "false",
+					success: false,
 					msg: 'Wrong Password'
 				});
 			}
